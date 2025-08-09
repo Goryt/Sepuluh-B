@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepuluh <b></b></title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00f7ff;
+            --secondary: #0066ff;
+            --dark: #0a192f;
+            --light: #e6f1ff;
+            --accent: #64ffda;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, nav {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+        
+        header {
+            background: rgba(10, 25, 47, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .logo i {
+            font-size: 1.8rem;
+        }
+        
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        /* Hero Section */
+        #beranda {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            margin-top: 1rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button:hover {
+            background: rgba(100, 255, 218, 0.1);
+            box-shadow: 0 0 15px rgba(100, 255, 218, 0.4);
+            transform: translateY(-3px);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            top: 20px;
+            left: 20px;
+            z-index: -1;
+            transition: all 0.3s;
+        }
+        
+        .about-image:hover::before {
+            top: 15px;
+            left: 15px;
+        }
+        
+        /* Vision Mission Section */
+        .vision-mission-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .vision-card, .mission-card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .vision-card:hover, .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 247, 255, 0.2);
+        }
+        
+        .vision-card::before, .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .vision-title, .mission-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .mission-list {
+            list-style-type: none;
+        }
+        
+        .mission-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .mission-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        /* Structure Section */
+        .struktur-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .node {
+            background: rgba(0, 118, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 200px;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 247, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 247, 255, 0.3);
+            border-color: rgba(0, 247, 255, 0.3);
+        }
+        
+        .node::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 247, 255, 0.1), transparent);
+            z-index: -1;
+        }
+        
+        .node h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .node p {
+            color: var(--light);
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Hope Tree Section */
+        .hope-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .hope-form {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hope-form h3 {
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+        
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            color: var(--light);
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+        }
+        
+        .hope-list {
+            flex: 2;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .hope-card {
+            background: rgba(0, 118, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 247, 255, 0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hope-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 247, 255, 0.3);
+        }
+        
+        .hope-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+        
+        .hope-card p {
+            margin-bottom: 1rem;
+        }
+        
+        .hope-card .hope-date {
+            font-size: 0.8rem;
+            color: var(--accent);
+            opacity: 0.7;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 25, 47, 0.9);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations and Effects */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle linear infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        .shooting-star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: shoot linear infinite;
+            transform: rotate(45deg);
+        }
+        
+        .shooting-star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, white, transparent);
+            transform: translateX(-100%);
+        }
+        
+        @keyframes shoot {
+            0% {
+                transform: translateX(0) translateY(0) rotate(45deg);
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(1000px) translateY(-300px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 247, 255, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 247, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 247, 255, 0); }
+        }
+        
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                gap: 0.5rem;
+                margin-top: 1rem;
+            }
+            
+            nav.show {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .node {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>SEPULUH B</span>
+            </div>
+            <button class="mobile-menu-btn" id="menuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
+                <a href="#beranda">Beranda</a>
+                <a href="#visi-misi">Visi Misi</a>
+                <a href="#struktur">Struktur</a>
+                <a href="#harapan">Harapan</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="beranda">
+        <div class="hero-content">
+            <h1 class="hero-title">Kelas X B</h1>
+            <p class="hero-subtitle">Menjelajahi semesta ilmu dan lautan kreativitas!</p>
+            <a href="#tentang" class="cta-button">Jelajahi</a>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="tentang" class="reveal">
+        <h2 class="section-title">Tentang Kelas</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Selamat datang di website resmi kelas kami!
+Kami adalah bagian dari perjalanan luar sebuah, dipandu oleh bintang terang kami Bu Tiara, wali kelas tercinta yang selalu membimbing dengan sabar dan penuh semangat.
+</p>
+                <p>Di tengah derasnya arus lautan ilmu dan luasnya galaksi pengetahuan, kami berlayar bersama sebagai satu kapal — saling mendukung, bertumbuh, dan berjuang mencapai cita-cita.</p>
+                <p>Kelas ini bukan sekadar ruang belajar.
+Ia adalah rumah, tempat tawa, diskusi hangat, perjuangan, dan cerita-cerita kecil yang akan kami kenang selamanya.
+</p>
+            </div>
+            <div class="about-image floating">
+                <img src="img.jpg" alt="Kelas 10">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Vision Mission Section -->
+    <section id="visi-misi" class="reveal">
+        <h2 class="section-title">Visi & Misi</h2>
+        <div class="vision-mission-container">
+            <div class="vision-card">
+                <h3 class="vision-title">Visi</h3>
+                <p>Menjadi kelas yang berprestasi, kreatif, dan solid di tengah semesta persaingan yang positif, serta menjadi teladan dalam pengembangan karakter dan akademik.</p>
+            </div>
+            <div class="mission-card">
+                <h3 class="mission-title">Misi</h3>
+                <ul class="mission-list">
+                    <li>Meningkatkan semangat belajar dan kerjasama antar siswa melalui kegiatan kolaboratif.</li>
+                    <li>Mengikuti kegiatan sekolah secara aktif dan produktif dengan penuh tanggung jawab.</li>
+                    <li>Membangun sikap saling menghargai, empati, dan bertanggung jawab dalam setiap tindakan.</li>
+                    <li>Mengembangkan potensi kreatif dan inovatif setiap anggota kelas.</li>
+                    <li>Menjalin hubungan harmonis antara siswa, guru, dan orang tua.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Structure Section -->
+    <section id="struktur" class="reveal">
+        <h2 class="section-title">Struktur KKS</h2>
+        <div class="struktur-container">
+            <div class="node pulse">
+                <h3>Ketua Kelas</h3>
+                <p>M. Sofyan Ramadhan</p>
+            </div>
+            <div class="node">
+                <h3>Wakil Ketua</h3>
+                <p>Syifa'ul Qulub</p>
+            </div>
+            <div class="node">
+                <h3>Sekretaris 1</h3>
+                <p>Fhristian Bramantya H.</p>
+            </div>
+            <div class="node">
+                <h3>Sekretaris 2</h3>
+                <p>Cantika Nova Lestari</p>
+            </div>
+            <div class="node">
+               <h3>sekretaris 3</h3>
+               <p>Siti Mardiyah </p>
+            </div>
+            <div class="node">
+                <h3>Bendahara 1</h3>
+                <p>Aminata Chalwa</p>
+            </div>
+            <div class="node">
+                <h3>Bendahara 2</h3>
+                <p>Dila Wijaya Putri</p>
+            </div>
+            <div class="node">
+             <h3>Spiritual 1</h3>
+             <p>Ahmad Mudzakkir </p>
+            </div>
+            <div class="node">
+                <h3>Spiritual 2</h3>
+              <p>M. Fuad Alwatsiq</p>
+            </div>
+            <div class="node">
+                <h3>Sie Al-biru 1 </h3>
+             <p>M. Hafidhun Naqi</p>
+            </div>
+            <div class="node">
+                <h3>Sie Al-biru 2</h3>
+                <p>Ridwan Ardian Dwi S.</p>
+            </div>
+            <div class="node">
+                <h3>Sie Al-Biru 3</h3>
+                <p>Siti Nur Fadhillah</p>
+            </div>
+            <div class="node">
+                <h3>Sie Al-biru 4</h3>
+                <p>Citra Khoirunni'mah</p>
+            </div>
+            <div class="node">
+                <h3>Sie Al-biru 5 </h3>
+                <p>Hikmah Urwatul Wusqo</p>
+            </div>
+            <div class="node">
+                <h3>Humas 1</h3>
+                <p>Badrut Tarjiibi</p>
+            </div>
+            <div class="node">
+                <h3>Humas 2</h3>
+                <p>M. Fatkhun Qorib</p>
+            </div>
+            <div class="node">
+                <h3>Humas 3</h3>
+                <p>Mousavi Zulkarnain</p>
+            </div>
+            <div class="node">
+                <h3>humas 4</h3>
+                <p>Aulia Nur Faizzah</p>
+            </div>
+            <div class="node">
+                <h3>Humas 5</h3>
+                <p>Aura Berlian Wahyu P.</p>
+            </div>
+            <div class="node">
+                <h3>Recording 1</h3>
+                <p>M. Shofwan Ubaidillah A.</p>
+            </div>
+            <div class="node">
+                <h3>Recording 2</h3>
+                <p>Bad Atusy Syuruuro</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Hope Tree Section -->
+    <section id="harapan" class="reveal">
+        <h2 class="section-title">Harapan</h2>
+        <div class="hope-container">
+            <div class="hope-form">
+                <h3>Tulis Harapanmu</h3>
+                <form id="hopeForm">
+                    <div class="form-group">
+                        <label for="hopeName">Nama (Opsional)</label>
+                        <input type="text" id="hopeName" placeholder="Nama Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="hopeMessage">Harapan/Kesan</label>
+                        <textarea id="hopeMessage" placeholder="Tulis harapan atau kesan untuk kelas Galaxy Laut..." required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Kirim Harapan</button>
+                </form>
+            </div>
+            <div class="hope-list" id="hopeList">
+                <!-- Hope cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+            <div class="footer-section">
+                <h3>Navigasi Cepat</h3>
+                <p><a href="#beranda">Beranda</a></p>
+                <p><a href="#tentang">Tentang Kelas</a></p>
+                <p><a href="#visi-misi">Visi Misi</a></p>
+                <p><a href="#struktur">Struktur Kelas</a></p>
+                <p><a href="#harapan">Pohon Harapan</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SepuluhB.id</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        menuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('show');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('show');
+            });
+        });
+        
+        // Create stars background
+        const starsContainer = document.getElementById('stars');
+        
+        function createStars() {
+            // Clear existing stars
+            starsContainer.innerHTML = '';
+            
+            // Create twinkling stars
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.width = `${Math.random() * 3 + 1}px`;
+                star.style.height = star.style.width;
+                star.style.animationDuration = `${Math.random() * 5 + 3}s`;
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                starsContainer.appendChild(star);
+            }
+            
+            // Create occasional shooting stars
+            setInterval(() => {
+                const shootingStar = document.createElement('div');
+                shootingStar.className = 'shooting-star';
+                shootingStar.style.left = `${Math.random() * 20}%`;
+                shootingStar.style.top = `${Math.random() * 20}%`;
+                shootingStar.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                starsContainer.appendChild(shootingStar);
+                
+                // Remove shooting star after animation
+                setTimeout(() => {
+                    shootingStar.remove();
+                }, 2000);
+            }, 3000);
+        }
+        
+        createStars();
+        
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(reveal => {
+                const revealTop = reveal.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (revealTop < windowHeight - 100) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+        
+        // Hope Tree functionality
+        const hopeForm = document.getElementById('hopeForm');
+        const hopeList = document.getElementById('hopeList');
+        let hopes = JSON.parse(localStorage.getItem('hopes')) || [];
+        
+        function displayHopes() {
+            hopeList.innerHTML = '';
+            
+            hopes.forEach((hope, index) => {
+                const hopeCard = document.createElement('div');
+                hopeCard.className = 'hope-card';
+                hopeCard.innerHTML = `
+                    ${hope.name ? `<p><strong>${hope.name}</strong></p>` : ''}
+                    <p>${hope.message}</p>
+                    <p class="hope-date">${new Date(hope.date).toLocaleDateString('id-ID')}</p>
+                    <button class="delete-btn" data-index="${index}"><i class="fas fa-trash"></i></button>
+                `;
+                hopeList.appendChild(hopeCard);
+            });
+            
+            // Add event listeners to delete buttons
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = this.getAttribute('data-index');
+                    hopes.splice(index, 1);
+                    localStorage.setItem('hopes', JSON.stringify(hopes));
+                    displayHopes();
+                });
+            });
+        }
+        
+        hopeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('hopeName').value.trim();
+            const message = document.getElementById('hopeMessage').value.trim();
+            
+            if (message) {
+                const newHope = {
+                    name: name || 'Anonim',
+                    message,
+                    date: new Date().toISOString()
+                };
+                
+                hopes.unshift(newHope);
+                localStorage.setItem('hopes', JSON.stringify(hopes));
+                
+                displayHopes();
+                hopeForm.reset();
+                
+                // Show success message
+                alert('Harapan Anda telah ditambahkan ke Pohon Harapan!');
+            }
+        });
+        
+        // Initialize hopes display
+        displayHopes();
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
